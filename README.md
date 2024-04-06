@@ -16,13 +16,13 @@ The basic syntax of a URL request to the API is shown below:
 
 Here is a set of colors that you are required to use in your application:
 
-* 'hsl(0, 0%, 100%)' // white
-* 'hsl(0, 0%, 96%)' // light grey
-* 'hsl(0, 0%, 18%)' // black
-* 'hsl(0, 0%, 51%)' // grey
-* 'hsl(0, 0%, 91%)' // light grey: used for separators
-* 'hsl(274, 82%, 60%)' // purple
-* 'hsl(0, 100%, 66%)' // red
+* hsl(0, 0%, 100%) // white
+* hsl(0, 0%, 96%) // light grey
+* hsl(0, 0%, 18%) // black
+* hsl(0, 0%, 51%) // grey
+* hsl(0, 0%, 91%) // light grey: used for separators
+* hsl(274, 82%, 60%) // purple
+* hsl(0, 100%, 66%) // red
 
 You can refer to the following two images to see how these colors are used in the application:
 
