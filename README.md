@@ -4,6 +4,14 @@ The only static resource for this application is the `logo.svg` file. The logo i
 
 A duplicate copy of the same file can be found in the `src` folder.
 
+# Dictionary APIs
+
+You will be using [Free Dictionary API](https://dictionaryapi.dev/) to fetch definitions of words.
+
+The basic syntax of a URL request to the API is shown below:
+
+* https://api.dictionaryapi.dev/api/v2/entries/en/<word>
+
 # Color palette
 
 Here is a set of colors that you are required to use in your application:
