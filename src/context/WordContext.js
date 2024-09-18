@@ -24,7 +24,6 @@ const WordProvider = ({ children }) => {
   useEffect(() => {
     // purpose 1: fetch all words from the database
     // purpose 2: set the words to the state
-    console.log(REACT_APP_API_URL); // check if this logs correctly
     const fetchWords = async () => {
       try {
         const response = await axios.get(`${REACT_APP_API_URL}/words`);
