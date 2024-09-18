@@ -1,4 +1,6 @@
 import { createBrowserRouter, RouterProvider} from 'react-router-dom';
+import { WordProvider } from './context/WordContext';
+import { ErrorProvider } from './context/ErrorContext';
 import Root from './Layout/Root';
 import { lazy } from 'react';
 import { Suspense } from 'react';
@@ -8,6 +10,8 @@ import Loading from './Pages/Loading';
 const Home = lazy(()  => import('./Pages/Home'));
 // import WordList from './Pages/WordList';
 const WordList = lazy(()  => import('./Pages/WordList'));
+
+const Error = lazy(() => import('./Pages/Error'));
 
 const router = createBrowserRouter([
  {
@@ -21,18 +25,24 @@ const router = createBrowserRouter([
     {
       path: 'word-list',
       element: <WordList />,
+    },
+    {
+      path: '*',
+      element: <Error />
     }
   ]
  },
-
-
 ])
 
 const App = () => {
   return (
-    <Suspense fallback={<Loading></Loading>}>
-      <RouterProvider router={router} />
-    </Suspense>
+    <ErrorProvider>
+      <WordProvider>
+        <Suspense fallback={<Loading></Loading>}>
+          <RouterProvider router={router} />
+        </Suspense>
+      </WordProvider>
+    </ErrorProvider>
 
   );
 }

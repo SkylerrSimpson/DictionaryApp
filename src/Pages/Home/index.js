@@ -1,12 +1,21 @@
 import SearchBar from "./Searchbar";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useSearchParams  } from "react-router-dom";
+import { useState, useEffect  } from "react";
 import DefinitionArea from "./DefinitionArea";
+import useWordContext from "../../hook/useWordContext";
+import ErrorDisplay from "../../component/ErrorDisplay";
 
 const Home = () => {
     const [definition, setDefintion] = useState(null);
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    const word = 'hello';
+    const { words, addWord } = useWordContext();
+
+    console.log(words);
+    console.log(addWord);
+
+    const word = searchParams.get('word')  ||'hello';
 
     const searchWordServer = async (word) => {
         try {
@@ -17,7 +26,7 @@ const Home = () => {
             console.log(data);
             return data[0];
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     };
 
@@ -32,6 +41,7 @@ const Home = () => {
 
     return (
         <div>
+            <ErrorDisplay pageKey='home' />
             <SearchBar 
             setDefintion={setDefintion} 
             searchWordServer={searchWordServer}
