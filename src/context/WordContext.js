@@ -35,7 +35,7 @@ const WordProvider = ({ children }) => {
       }
     };
     fetchWords();
-  }, []); // [] is second argument
+  }); // [] is second argument
 
   // purpose 1: add a new word to the database
   // purpose 2: update the words state

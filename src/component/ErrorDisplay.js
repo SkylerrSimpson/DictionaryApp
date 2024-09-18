@@ -16,7 +16,7 @@ const ErrorDisplay = ({ pageKey }) => {
           clearTimeout(timer);
         }
     }
-  }, [errors]);
+  }, [clearErrors, errors, pageKey]);
 
   return (
     errors ? <div style={{color: 'red', paddingTop: 20, paddingBottom: 20, fontSize: 20}}>
