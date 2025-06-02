@@ -14,7 +14,7 @@ const port = process.env.PORT || 8000;
 app.use(express.json());
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://dictionary-frontend-ycl1.onrender.com', 'https://www.skylerrsimpson.com'],
+  origin: ['http://localhost:3000', 'https://dictionary-frontend-ycl1.onrender.com', 'https://skylerdictionary.netlify.app/'],
   methods: 'GET,POST,PUT,DELETE',
   allowedHeaders: 'Content-Type,Authorization',
   credentials: true,
