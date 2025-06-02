@@ -14,7 +14,6 @@ const Home = () => {
 
     console.log(words);
     console.log(addWord);
-
     const word = searchParams.get('word')  ||'hello';
 
     const searchWordServer = async (word) => {
