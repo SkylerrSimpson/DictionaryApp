@@ -8,7 +8,7 @@ import ErrorDisplay from "../../component/ErrorDisplay";
 
 const Home = () => {
     const [definition, setDefintion] = useState(null);
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
 
     const { words, addWord } = useWordContext();
 
@@ -36,7 +36,7 @@ const Home = () => {
         }
 
         renderInitialDefinition();
-    }, []);
+    }, [word]);
 
     return (
         <div>
