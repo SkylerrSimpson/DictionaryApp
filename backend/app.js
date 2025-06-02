@@ -10,11 +10,9 @@ const app = express();
 // set the port
 const port = process.env.PORT || 8000;
 
-// Middleware to parse JSON bodies
-app.use(express.json());
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://dictionary-frontend-ycl1.onrender.com', 'https://skylerdictionary.netlify.app', 'https://683cf5d9572570c67128616d--skylerdictionary.netlify.app'],
+  origin: ['http://localhost:3000', 'https://dictionary-frontend-ycl1.onrender.com', 'https://skylerdictionary.netlify.app/', 'https://683cf5d9572570c67128616d--skylerdictionary.netlify.app'],
   methods: 'GET,POST,PUT,DELETE',
   allowedHeaders: 'Content-Type,Authorization',
   credentials: true,
@@ -22,6 +20,11 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions)); // Handle preflight requests
+
+// Middleware to parse JSON bodies
+
+app.use(express.json());
+
 
 // Connect to MongoDB database
 mongoose.connect(process.env.ATLAS_URI, { useNewUrlParser: true, useUnifiedTopology: true });
