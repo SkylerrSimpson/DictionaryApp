@@ -4,7 +4,9 @@ This repository remains an independent maintained original. Its local `npm start
 
 ## Project settings
 
-Import this repository as its own Vercel project, with the repository root as Root Directory and Node.js 24.x. Package engines are pinned to `24.x` (including lockfile metadata), so Vercel cannot select a later major from a broad `>=22` range. The checked-in `vercel.json` selects the Other preset, installs the required locked dependencies, runs `npm run build:vercel`, and publishes `vercel-static`. Do not override these commands with the development server or point the CDN at the source `public` directory.
+Create a separate Vercel project for this repository. **Before the first deployment, select `maintained-original` as the production branch and verify that the deployment source is that branch.** Do not accept a Git import that would immediately deploy the default `main` branch; configure the branch first or use a branch-specific import flow. `main` contains the historical, unmaintained application and must not be deployed using these instructions. Do not supply or reuse its old Mongo configuration.
+
+Use the repository root as Root Directory and Node.js 24.x. Package engines are pinned to `24.x` (including lockfile metadata), so Vercel cannot select a later major from a broad `>=22` range. The checked-in `vercel.json` selects the Other preset, installs the required locked dependencies, runs `npm run build:vercel`, and publishes `vercel-static`. Do not override these commands with the development server or point the CDN at the source `public` directory.
 
 The build compiles CRA with source maps disabled, then stages only compiled static assets and the existing public files. Environment files, Git history, backend source, and source maps are excluded from the public output. Do not put secrets in `REACT_APP_*`: CRA embeds those variables in browser bundles. `.vercelignore` also excludes private local configuration and historical backend entry files from uploads.
 
