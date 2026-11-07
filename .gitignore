@@ -30,3 +30,7 @@ yarn-error.log*
 **/node_modules/
 **/build/
 .npm-cache/
+
+# Vercel generated deployment artifacts
+.vercel/
+/vercel-static/

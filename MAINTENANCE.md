@@ -28,3 +28,7 @@ CRA/react-scripts and the recognizable React component/style structure are retai
 Saved-list initialization is serialized across tabs using Web Locks. Production cookies use the `__Host-` prefix and ambiguous duplicate cookies are rejected. Production servers bind to the host network interface; development stays on loopback. Only known React routes receive the SPA shell; unknown paths and missing assets return HTTP 404.
 
 The unused CRA template test was replaced with a targeted regression check for the actual app workflow. Axios is pinned to 1.21.0. React Router stays on its v6 line at 6.30.6; two reported v6 advisories remain and their reachable inputs require review before public deployment. Build dependencies remain a legacy toolchain; they are not part of the maintained Express runtime.
+
+## Vercel preparation
+
+Added a separate deployment configuration and compiled-asset staging step; local launchers and original UI code are unchanged. A small Node function adapter composes the existing PostgreSQL/Express API with secure production configuration. See [DEPLOYMENT.md](DEPLOYMENT.md) for required settings, free-tier limits, and the still-pending Vercel/Neon runtime checks. Nothing was deployed by this change.

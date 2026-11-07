@@ -1,0 +1,11 @@
+.git/
+**/.git/
+.env
+.env.*
+**/.env
+**/.env.*
+**/*.map
+**/node_modules/
+**/build/
+vercel-static/
+backend/app.js
