@@ -1,0 +1,1 @@
+Dictionary app using https://dictionaryapi.dev, mongoDB backend

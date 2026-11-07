@@ -1,6 +1,6 @@
-import PartOfSpeech from "./PartOfSpeech"
-import { Color } from "../../../constant/Color"
-import Definition from "./Definition"
+import PartOfSpeech from "./PartOfSpeech";
+import { Color } from "../../../constant/Color";
+import Definition from "./Definition";
 import { IoPlayCircleOutline } from "react-icons/io5";
 import Synonyms from "./Synonyms";
 
@@ -9,44 +9,60 @@ import Synonyms from "./Synonyms";
 //         render the usage examples whenever availabel for every given defintion
 
 const Meaning = ({ meaning, phonetics }) => {
+  const audioUrl = phonetics?.find((item) =>
+    /^https:\/\//.test(item.audio || ""),
+  )?.audio;
 
-    const playAudio = () => {
+  const playAudio = () => {
+    if (!audioUrl) return;
+    const audio = new Audio(audioUrl); //create audio object
 
-        const audio = new Audio(phonetics[0].audio); //create audio object
+    audio.play().catch(() => {});
+  };
 
-        audio.play();
-    }
+  return (
+    <>
+      <PartOfSpeech partOfSpeech={meaning.partOfSpeech} />
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "1rem",
+              lineHeight: "1.5rem",
+              color: Color.secondaryText,
+            }}
+          >
+            Meaning
+          </div>
 
-    return (
-        <>
-            <PartOfSpeech partOfSpeech={meaning.partOfSpeech} />
-            <div style={{display: 'flex', justifyContent:'space-between'}}>
-                <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-start',
-                }}> 
-                    <div style={{ fontSize: '1rem', lineHeight: '1.5rem', color: Color.secondaryText}}>
-                        Meaning
-                    </div>
-
-                    <div style={{marginTop: '2rem', marginBottom: '2rem',}}>
-                        {
-                            meaning.definitions.map((definition, index) => (
-                                <Definition key={index} definitionObject={definition} />
-                            ))
-                        }
-                    </div>
-                </div>
-                <div style={{}}>
-                        <IoPlayCircleOutline size={80} color={Color.accent} style={{cursor:'pointer'}} onClick={playAudio} />
-                </div>
-            </div>
-            <Synonyms synonyms={meaning.synonyms} />
-
-        </>
-    );
+          <div style={{ marginTop: "2rem", marginBottom: "2rem" }}>
+            {meaning.definitions.map((definition, index) => (
+              <Definition key={index} definitionObject={definition} />
+            ))}
+          </div>
+        </div>
+        <div style={{}}>
+          <button
+            type="button"
+            className="icon-button"
+            aria-label="Play pronunciation"
+            disabled={!audioUrl}
+            onClick={playAudio}
+          >
+            <IoPlayCircleOutline size={80} color={Color.accent} />
+          </button>
+        </div>
+      </div>
+      <Synonyms synonyms={meaning.synonyms} />
+    </>
+  );
 };
 
 export default Meaning;

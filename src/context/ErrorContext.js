@@ -1,43 +1,26 @@
-import { createContext, useState } from 'react';
-
+import { createContext, useState, useCallback } from "react";
 const ErrorContext = createContext();
-
 const ErrorProvider = ({ children }) => {
-  
-  const [errors, setErrors] = useState([]);
-
-  // reportErrors: add an error message to the errors state
-  const reportErrors = (key, error) => {
-    setErrors((prevErrors) => {
-      return {
-        ...prevErrors,
-        [key]: error,
-      };
-    });
-  };
-
-  // clearErrors: remove an error message from the errors state
-  const clearErrors = (key) => {
-    setErrors((prevErrors) => {
-      const newErrors = {...prevErrors };
-      delete newErrors[key];
-      return newErrors;
-    });
-  };
-
-
+  const [errors, setErrors] = useState({});
+  const reportErrors = useCallback(
+    (key, error) => setErrors((current) => ({ ...current, [key]: error })),
+    [],
+  );
+  const clearErrors = useCallback(
+    (key) =>
+      setErrors((current) => {
+        if (!(key in current)) return current;
+        const next = { ...current };
+        delete next[key];
+        return next;
+      }),
+    [],
+  );
   return (
-    <ErrorContext.Provider
-      value={{ 
-        errors,
-        reportErrors,
-        clearErrors
-      }}
-    >
+    <ErrorContext.Provider value={{ errors, reportErrors, clearErrors }}>
       {children}
     </ErrorContext.Provider>
   );
 };
-
 export { ErrorContext, ErrorProvider };
 export default ErrorContext;

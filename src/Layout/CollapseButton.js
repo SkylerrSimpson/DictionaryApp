@@ -1,18 +1,20 @@
 import { CiMenuBurger } from "react-icons/ci";
 
-
-const CollapseButton = ( {setIsCollapsed } ) => {
-    return (
-        <button style={{
-            backgroundColor: 'transparent',
-            border: 'none',
-            cursor: 'pointer',
-        }}
-        onClick={() => setIsCollapsed(false)}
-        >
-            <CiMenuBurger />
-        </button>
-    );
-}
+const CollapseButton = ({ setIsCollapsed }) => {
+  return (
+    <button
+      type="button"
+      aria-label="Open navigation"
+      style={{
+        backgroundColor: "transparent",
+        border: "none",
+        cursor: "pointer",
+      }}
+      onClick={() => setIsCollapsed(false)}
+    >
+      <CiMenuBurger />
+    </button>
+  );
+};
 
 export default CollapseButton;
